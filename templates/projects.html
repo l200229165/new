@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}Projects - My Website{% endblock %}
+
+{% block content %}
+<section class="py-5">
+    <div class="container px-5">
+        <h1 class="fw-bolder mb-4">Projects</h1>
+        <div class="row gx-5">
+            {% for project in projects %}
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card border-0 shadow rounded-4">
+                    {% if project.image %}
+                    <img src="{{ project.image.url }}" class="card-img-top" alt="{{ project.title }} Image">
+                    {% endif %}
+                    <div class="card-body">
+                        <h2 class="card-title">{{ project.title }}</h2>
+                        <p class="card-text">{{ project.description }}</p>
+                        <p class="text-muted">Company: {{ project.company_name }}</p>
+                        <p class="text-muted">Experience Duration: {{ project.start_date }} - {{ project.end_date }}</p>
+                        <p class="text-muted">Skills Used: {{ project.skills_used|join:", " }}</p>
+                        <p class="text-muted">Experiences:</p>
+                        <ul>
+                            <li>Developed a user-friendly booking feature for Traveloka, enhancing customer experience and increasing booking rates by 20%.</li>
+                            <li>Collaborated with cross-functional teams at Gojek to implement a ride-sharing feature, improving efficiency and reducing wait times by 15%.</li>
+                            <li>Participated in the Bangkit program, focusing on developing scalable applications and improving data analytics capabilities.</li>
+                        </ul>
+                        <a href="{% url 'project_detail' project.pk %}" class="btn btn-primary">View Details</a>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <div class="col-12">
+                <p>No projects found.</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}

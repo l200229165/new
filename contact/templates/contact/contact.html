@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block title %}Projects - My Website{% endblock %}
+
+{% block content %}
+  <h1>Projects</h1>
+  {% for project in projects %}
+    <h2>{{ project.title }}</h2>
+    <p>{{ project.description }}</p>
+    <p>{{ project.start_date }} - {{ project.end_date }}</p>
+    <a href="{% url 'response' response.pk %}">Detail</a>
+  {% endfor %}
+{% endblock %}

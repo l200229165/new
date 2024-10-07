@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ project.title }} - Project Details{% endblock %}
+
+{% block content %}
+<section class="py-5">
+    <div class="container px-5">
+        <h1>{{ project.title }}</h1>
+        {% if project.image %}
+        <img src="{{ project.image.url }}" alt="{{ project.title }} Image" class="img-fluid">
+        {% endif %}
+        <p>{{ project.description }}</p>
+        <p>Company: {{ project.company_name }}</p>
+        <p>Experience Duration: {{ project.start_date }} - {{ project.end_date }}</p>
+        <p>Skills Used: {{ project.skills_used|join:", " }}</p>
+        <p>Experiences:</p>
+        <ul>
+            <li>Developed a user-friendly booking feature for Traveloka, enhancing customer experience and increasing booking rates by 20%.</li>
+            <li>Collaborated with cross-functional teams at Gojek to implement a ride-sharing feature, improving efficiency and reducing wait times by 15%.</li>
+            <li>Participated in the Bangkit program, focusing on developing scalable applications and improving data analytics capabilities.</li>
+        </ul>
+    </div>
+</section>
+{% endblock %}
